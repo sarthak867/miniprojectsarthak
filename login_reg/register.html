@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="container">
+        <form action="register.php" method="post">
+            <h2>Registration</h2>
+            <div class="content">
+                <div class="input-box">
+                   <label for="name">Full Name</label>
+                 <input type="text" placeholder="Enter Full Name " name="name" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="Collegeid">College Id</label>
+                    <input type="text" placeholder="for students only" name="Collegeid" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="Email">Email </label>
+                    <input type="email" placeholder="Enter Student email " name="email" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="Phone">Phone Number</label>
+                    <input type="number" placeholder="Enter valid number " name="phone" required>
+                
+                </div>
+                
+                <div class="input-box">
+                    <label for="Password">Password</label>
+                    <input type="password" placeholder="Enter new Password " name="Password" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="confirm-Password">Confirm Password</label>
+                    <input type="password" placeholder="Confirm your Password " name="confirm-Password" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="dob">DOB</label>
+                    <input type="date"  name="dob" required>
+                </div>
+            
+            <div class="alert">
+                <p>By clicking Sign Up, you agree to our <a href="#">Terms</a>,<a href="#">Privacy Policy</a> and <a href="#">cookies policy</a>. You may receive notifications from us and can opy out at any time.</p>
+            </div>
+            <div class="button-container">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

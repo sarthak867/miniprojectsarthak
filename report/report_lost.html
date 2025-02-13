@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item</title>
+    <link rel="stylesheet" href="report_lost.css">
+</head>
+<body>
+
+    <section id="report-lost">
+        <h2>Report Lost Item</h2>
+        <form id="lost-item-form" action="proesslost.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="item-name">Item Name:</label>
+                <input type="text" id="item-name" name="item-name" required>
+            </div>
+            <div class="form-group">
+                <label for="item-description">Item Description:</label>
+                <textarea id="item-description" name="item-description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="lost-location">Lost Location:</label>
+                <input type="text" id="lost-location" name="lost-location" required>
+            </div>
+            <div class="form-group">
+                <label for="lost-date">Date Lost:</label>
+                <input type="date" id="lost-date" name="lost-date" required>
+            </div>
+            <div class="form-group">
+                <label for="item-image">Item Image:</label>
+                <input type="file" id="item-image" name="item-image" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="contact-info">Contact Information:</label>
+                <input type="text" id="contact-info" name="contact-info" required>
+            </div>
+
+            <div class="container">
+                <button type="submit">Submit</button>
+            </div>
+            
+        </form>
+    </section>
+
+    <script src="report_lost.js"></script>
+</body>
+</html>
