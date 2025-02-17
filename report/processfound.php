@@ -59,7 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $itemName, $itemDescription, $foundLocation, $foundDate, $imagePath, $contactInfo);
 
     if ($stmt->execute()) {
-        echo "✅ Found item reported successfully.";
+        echo "<script>alert('✅ Found item reported successfully.');
+            window.location.href='login.html'; </script>";
     } else {
         echo "❌ Error: " . $stmt->error;
     }

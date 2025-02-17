@@ -1,36 +1,46 @@
 <?php
+session_start();  // Start session
 
-$servername = "localhost"; 
-$username = "root";       
-$password = "";            
-$dbname = "lost_sync"; 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "lost_sync";
 
 // Connect to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
-if($conn->connect_error){
-    die("connection failed :".$conn->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-// form data
-$email = $_POST['email'];
-$user_password = $_POST['password'];
-$query = "SELECT * FROM register WHERE `email` = '$email'";
-$result = mysqli_query($conn, $query);
 
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+// Get login form data
+$email = trim($_POST['email']);
+$user_password = trim($_POST['password']);
+
+$query = "SELECT id, full_name, college_id, password FROM register WHERE email = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+
     if ($user_password !== $row['password']) {
-        // wrong password
-        echo "Incorrect password.";
+        echo "<script>alert('Incorrect password.'); window.location.href='../login.php';</script>";
         exit();
     } else {
-        // Redirecting to homepage in index.html
-        $_SESSION['user_id']=$row['id'];
-        $_SESSION['full_name']=$row['full_name'];
-        header("Location: ../index.php");
+        // Store user details in session
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['full_name'] = $row['full_name'];
+        $_SESSION['college_id'] = $row['college_id']; 
+
+        echo "<script>alert('Login successful!'); window.location.href='../index.php';</script>";
         exit();
     }
 } else {
-    echo "No user found with that email.";
+    echo "<script>alert('No user found with that email.'); window.location.href='../login.php';</script>";
 }
 
+$stmt->close();
+$conn->close();
 ?>

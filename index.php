@@ -6,6 +6,10 @@
     <title>Lost Sync</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<?php
+session_start();
+?>
+
 <body>
     <!-- Header Section -->
     <header>
