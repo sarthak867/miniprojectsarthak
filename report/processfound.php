@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -11,6 +11,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+// Ensure the user is logged in
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['college_id'])) {
+    echo "<script>alert('User not logged in. Please log in first.'); window.location.href='../login.php';</script>";
+    exit();
+}
+
+$college_id = $_SESSION['college_id']; // Get logged-in user's college ID
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -55,14 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert data into database
-    $stmt = $conn->prepare("INSERT INTO found_items (item_name, item_description, found_location, found_date, image_path, contact_info) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $itemName, $itemDescription, $foundLocation, $foundDate, $imagePath, $contactInfo);
+    $stmt = $conn->prepare("INSERT INTO found_items (item_name, item_description, found_location, found_date, image_path, contact_info,college_id) VALUES (?, ?, ?, ?, ?, ?,?)");
+    $stmt->bind_param("sssssss", $itemName, $itemDescription, $foundLocation, $foundDate, $imagePath, $contactInfo,$college_id);
 
     if ($stmt->execute()) {
-        echo "<script>alert('✅ Found item reported successfully.');
-            window.location.href='login.html'; </script>";
+        echo "<script>alert('✅ Found item reported successfully.'); window.location.href='../index.php';</script>";
     } else {
-        echo "❌ Error: " . $stmt->error;
+        echo "<script>alert('Error submitting report. Please try again.'); window.location.href='../report_lost.php';</script>";
     }
 
     $stmt->close();
