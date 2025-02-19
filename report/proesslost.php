@@ -14,9 +14,10 @@ if ($conn->connect_error) {
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['college_id'])) {
-    echo "<script>alert('User not logged in. Please log in first.'); window.location.href='../login.php';</script>";
+    echo "<script>alert('User not logged in. Please log in first.'); window.location.href='../login_reg/login.html';</script>";
     exit();
 }
+
 
 $college_id = $_SESSION['college_id']; // Get logged-in user's college ID
 
@@ -35,7 +36,7 @@ $image_path = "";
 if (move_uploaded_file($_FILES["item-image"]["tmp_name"], $target_file)) {
     $image_path = $target_file;
 } else {
-    echo "<script>alert('Error uploading image.'); window.location.href='../report_lost.php';</script>";
+    echo "<script>alert('Error uploading image.'); window.location.href='../report_lost.html';</script>";
     exit();
 }
 
@@ -55,7 +56,7 @@ $stmt->bind_param("sssssss", $item_name, $item_description, $lost_location, $los
 if ($stmt->execute()) {
     echo "<script>alert('Report submitted successfully!'); window.location.href='../index.php';</script>";
 } else {
-    echo "<script>alert('Error submitting report. Please try again.'); window.location.href='../report_lost.php';</script>";
+    echo "<script>alert('Error submitting report. Please try again.'); window.location.href='../report_lost.html';</script>";
 }
 
 $stmt->close();

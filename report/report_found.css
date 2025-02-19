@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -19,9 +18,9 @@ body {
 
 h2 {
     font-family: 'Great Vibes', cursive;
-      font-size: 56px;
-      letter-spacing: 2px;
-      color: #333;
+    font-size: 56px;
+    letter-spacing: 2px;
+    color: #333;
     margin-bottom: 20px;
     text-decoration: underline;
 }
@@ -35,12 +34,18 @@ label {
     display: block;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
+}
+
+.warning {
+    font-size: xx-small;
+    color: rgb(210, 112, 112);
 }
 
 button {

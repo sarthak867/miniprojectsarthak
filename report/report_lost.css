@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 #report-lost {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -47,7 +46,8 @@ textarea {
 }
 
 button {
-    background-color: #007bff; /* Matching Report Found Button */
+    background-color: #007bff;
+    /* Matching Report Found Button */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -58,8 +58,14 @@ button {
     transition: 0.3s ease;
 }
 
+.warning {
+    font-size: xx-small;
+    color: rgb(210, 112, 112);
+}
+
 button:hover {
-    background-color: #218838; /* Slightly Darker Green */
+    background-color: #218838;
+    /* Slightly Darker Green */
 }
 
 .container {

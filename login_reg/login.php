@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 $email = trim($_POST['email']);
 $user_password = trim($_POST['password']);
 
-$query = "SELECT id, full_name, college_id, password FROM register WHERE email = ?";
+$query = "SELECT id, full_name, college_id, password, role FROM register WHERE email = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $email);
 $stmt->execute();
@@ -32,7 +32,11 @@ if ($result->num_rows > 0) {
         // Store user details in session
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['full_name'] = $row['full_name'];
-        $_SESSION['college_id'] = $row['college_id']; 
+        $_SESSION['college_id'] = $row['college_id'];
+         $_SESSION['role'] = strtolower($row['role']); // Normalize case
+         
+        // Debugging output
+        error_log("User role: " . $row['role']);
 
         echo "<script>alert('Login successful!'); window.location.href='../index.php';</script>";
         exit();

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Found Item</title>
     <link rel="stylesheet" href="report_found.css">
 </head>
+
 <body>
 
     <section id="report-found">
@@ -28,7 +30,7 @@
                 <input type="date" id="found-date" name="found-date" required>
             </div>
             <div class="form-group">
-                <label for="item-image">Item Image:</label>
+                <label for="item-image">Item Image <span class="warning">(Max: 500kb)</span>:</label>
                 <input type="file" id="item-image" name="item-image" accept="image/*">
             </div>
             <div class="form-group">
@@ -41,4 +43,5 @@
 
     <script src="report_found.js"></script>
 </body>
+
 </html>

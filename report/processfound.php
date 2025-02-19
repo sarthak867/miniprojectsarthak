@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['college_id'])) {
-    echo "<script>alert('User not logged in. Please log in first.'); window.location.href='../login.php';</script>";
+    echo "<script>alert('User not logged in. Please log in first.'); window.location.href='../login_reg/login.html';</script>";
     exit();
 }
 
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "<script>alert('✅ Found item reported successfully.'); window.location.href='../index.php';</script>";
     } else {
-        echo "<script>alert('Error submitting report. Please try again.'); window.location.href='../report_lost.php';</script>";
+        echo "<script>alert('Error submitting report. Please try again.'); window.location.href='report_found.html';</script>";
     }
 
     $stmt->close();

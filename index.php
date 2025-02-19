@@ -8,6 +8,8 @@
 </head>
 <?php
 session_start();
+
+error_log("Session Role: " . ($_SESSION['role'] ?? 'Not Set'));
 ?>
 
 <body>
@@ -19,7 +21,13 @@ session_start();
                 <li><a href="index.php">Home</a></li>
                 <li><a href="report/report_lost.html">Report Lost Item</a></li>
                 <li><a href="report/report_found.html">Report Found Item</a></li>
+                <li><a href="report/found_items.php">Found Items</a></li>
+                <li><a href="report/approved_items.php">Items Distibuted</a></li>
+                <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                <li><a href="admin/approve_claim.php">ADMIN</a></li>
+                <?php endif; ?>
                 <li><a href="#">About Us</a></li>
+
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>

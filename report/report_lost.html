@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Lost Item</title>
     <link rel="stylesheet" href="report_lost.css">
 </head>
+
 <body>
 
     <section id="report-lost">
@@ -28,7 +30,7 @@
                 <input type="date" id="lost-date" name="lost-date" required>
             </div>
             <div class="form-group">
-                <label for="item-image">Item Image:</label>
+                <label for="item-image">Item Image <span class="warning">(Max: 500kb)</span></label>
                 <input type="file" id="item-image" name="item-image" accept="image/*">
             </div>
             <div class="form-group">
@@ -39,10 +41,11 @@
             <div class="container">
                 <button type="submit">Submit</button>
             </div>
-            
+
         </form>
     </section>
 
     <script src="report_lost.js"></script>
 </body>
+
 </html>
