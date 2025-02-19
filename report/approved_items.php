@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -27,6 +28,7 @@ $result = $conn->query($sql);
     <header>
         <h1>Approved Items</h1>
         <p>These items have been claimed and approved. If you believe an item is wrongly approved, you may raise a dispute.</p>
+         <p> In case of any dispute do not change the subject, item name & item id, otherwise your dispute will be rejected </p>
     </header>
 
     <div class="search-container">
@@ -44,8 +46,7 @@ $result = $conn->query($sql);
                             <p><strong>Description:</strong> ' . htmlspecialchars($row["item_description"]) . '</p>
                             <p><strong>Found Location:</strong> ' . htmlspecialchars($row["found_location"]) . '</p>
                             <p><strong>Date Found:</strong> ' . htmlspecialchars($row["found_date"]) . '</p>
-                            <p><strong>Contact:</strong> ' . htmlspecialchars($row["contact_info"]) . '</p>
-                            <a href="dispute_item.php?id=' . $row["id"] . '" class="dispute-btn">Raise Dispute</a>
+                            <button class="dispute-btn" onclick="confirmDispute(' . $row['id'] . ', \'' . addslashes($row['item_name']) . '\')">Raise Dispute</button>
                         </div>
                       </div>';
             }
@@ -54,6 +55,21 @@ $result = $conn->query($sql);
         }
         ?>
     </div>
+
+    <script>
+        function confirmDispute(itemId, itemName) {
+            let confirmAction = confirm("Are you sure you want to raise a dispute for '" + itemName + "'? if yes then do not change ka subject and item name of product by your ouwn otherwise it will be dicarded");
+            if (confirmAction) {
+                let lostSyncEmail = "lostsync@gmail.com";  // Update with your actual Lost Sync email
+                let subject = encodeURIComponent("Dispute Raised for Approved Item (ID: " + itemId + ")");
+                let body = encodeURIComponent("Hello,\n\nI want to raise a dispute for the following approved item:\n\nItem Name: " + itemName + "\nItem ID: " + itemId + "\n\nMy Contact: \n\nPlease review my dispute.\n\nThanks.");
+                
+                let gmailUrl = `https://mail.google.com/mail/?view=cm&to=${lostSyncEmail}&su=${subject}&body=${body}`;
+                
+                window.open(gmailUrl, '_blank');  // Open in a new tab
+            }
+        }
+    </script>
 
     <script src="approved_items.js"></script>
 
