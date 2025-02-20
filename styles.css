@@ -251,9 +251,20 @@ header {
     background-color: #ff6347;
 }
 
-footer{
+footer {
+    background-color: #333;  /* Dark background */
+    color: white;  /* Text white */
     text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
+    padding: 10px 0;
+}
+
+footer a {
+    color: #93dbe6; /* Light gray for better visibility */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #ffcc00; /* Yellow on hover */
+    text-decoration: underline;
 }

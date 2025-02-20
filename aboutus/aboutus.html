@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Lost Sync</title>
+    <link rel="stylesheet" href="about_us.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <section class="team-section">
+        <h1 class="team-heading">Meet our beautiful team</h1>
+
+
+        <div class="team-container">
+            <div class="team-member" onclick="showDetails('sarthak')">
+                <img src="sarthak.jpeg" alt="Sarthak Rajvanshi">
+                <div class="name">Sarthak Rajvanshi</div>
+                <div class="role">Full-stack Developer</div>
+            </div>
+            
+            <div class="team-member" onclick="showDetails('sarthakYadav')">
+                <img src="sarthakyadav.jpeg" alt="Sarthak Yadav">
+                <div class="name">Sarthak Yadav</div>
+                <div class="role">Testing</div>
+            </div>
+
+            <div class="team-member" onclick="showDetails('sapna')">
+                <img src="sapna.jpeg" alt="Sapna">
+                <div class="name">Sapna Sharma</div>
+                <div class="role">Testing</div>
+            </div>
+
+            <div class="team-member" onclick="showDetails('shivam')">
+                <img src="shivam.jpeg" alt="Shivam">
+                <div class="name">Shivam Kumar</div>
+                <div class="role">Testing</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="team-details" class="details-container">
+        <div class="profile">
+            <img id="detail-image" src="" alt="Profile">
+        </div>
+        <div class="info">
+            <h2 id="detail-name" class="member"></h2>
+            <h3 id="detail-role"></h3>
+            <p id="detail-bio"></p>
+            <b><div class="social-links" class="links" >
+                <a id="linkedin" href="#" target="_blank">LinkedIn</a>
+                <a id="github" href="#" target="_blank">GitHub</a>
+                <a id="instagram" href="#" target="_blank">Instagram</a>
+            </div></b>
+        </div>
+    </div>
+
+    <script src="about_us.js"></script>
+</body>
+</html>
